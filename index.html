@@ -21,19 +21,23 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script type="module" src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
 <body>
     <div class="jumbotron" id='page-1'>
         <div class="row">
-            <select name="" id=""></select>
-            <button>OK</button>
+            <select name="namesList" id="namesList"></select>
+            <input type="submit" value="OK">
         </div>
+        <br>    
         <div class="row">
-            <input type="text" name="name" id="name" placeholder="Input your name" />
-            <input type="text" name="age" id="age" placeholder="Input your age" />
-            <button>Create a new name</button>
+            <form id="newUser">
+                <input type="text" name="name" id="name" placeholder="Input your name" />
+                <input type="text" name="age" id="age" placeholder="Input your age" />
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
 
@@ -67,8 +71,6 @@
             </div>
         </div>
     </div>
-
-
 
 </body>
 

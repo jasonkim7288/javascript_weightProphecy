@@ -1,1 +1,1 @@
-import input from './input.js';
+import {getUsers} from './users.js';
