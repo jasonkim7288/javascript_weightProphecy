@@ -1,5 +1,8 @@
-import input from './input.js';
+import {getUsers} from './getUsers.js';
+import setColor from './input.js';
 import prediction from './prediction.js';
-import updateHistory from './updateHistory.js';
 
-updateHistory(input[0]);
+getUsers();
+setInterval(setColor, 2000);
+// setTimeout(() => {  window .location.reload() }, 3000);
+

@@ -25,3 +25,21 @@
         transform: scale(1);
     }
 }
+
+#page-1{
+    margin-top: 10px;;
+}
+
+#page-2{
+    margin: 20px;
+}
+#message{
+    color: red;
+    font-weight: bold;
+    margin: 20px;;
+}
+
+.predict, .stat{
+    margin-top: 5px;
+    padding-top: 5px;
+}

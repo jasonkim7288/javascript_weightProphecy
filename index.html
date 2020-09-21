@@ -22,29 +22,38 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script type="module" src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
 <body>
+   <div class="container">
     <div class="jumbotron" id='page-1'>
         <div class="row">
-            <select name="" id=""></select>
-            <button>OK</button>
+            <select name="namesList" id="namesList"></select>
+            <input id="ok" type="submit" value="OK">
         </div>
+        <br>
         <div class="row">
-            <input type="text" name="name" id="name" placeholder="Input your name" />
-            <input type="text" name="age" id="age" placeholder="Input your age" />
-            <button>Create a new name</button>
+            <form id="newUser">
+                <input type="text" name="name" id="name" placeholder="Input your name" />
+                <input type="text" name="age" id="age" placeholder="Input your age" />
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
 
     <div class="container mt-5" id="page-2">
         <div class="row">
-            <div class="col-12 col-md-6">
-                <input type="date" name="input-date" id="input-date">
-                <input type="text" name="weight" id="weight">
-                <button id="input-weight">Input weight</button>
-
+            <div class="stat col-12 col-sm-6">
+                <div>
+                    <form id="updateUser">
+                        <input type="date" name="inputDate" id="inputDate">
+                       <input type="text" name="weight" id="weight" placeholder="Enter weight">
+                        <input id="input-weight" type="submit" value="Input weight">
+                    </form>
+                </div>
+                <div id="message"></div>
                 <div id="table-wrapper" class="mt-5">
                     <table class="table">
                         <tr>
@@ -55,11 +64,12 @@
                     </table>
                 </div>
 
-                <div>
-                    <!-- Chart is gonna be here -->
+                <div class="chart-container" style="position: relative; height:40vh; width:30vw">
+                    <canvas id="chart"></canvas>
                 </div>
+
             </div>
-            <div class="col-12 col-md-6 mt-5 mt-md-0">
+            <div class="predict col-12 col-md-6 mt-5 mt-md-0">
                 <h3 class="text-center">Check the Prophecy</h3>
                 <div>
                     <input class="form-control mr-3 mt-4" type="date" name="prediction-date" id="prediction-date">
@@ -77,7 +87,7 @@
         </div>
     </div>
 
-
+   </div>
 
 </body>
 
