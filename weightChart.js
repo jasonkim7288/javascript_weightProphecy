@@ -7,7 +7,7 @@ export default async function weightChart(weightHistory){
     data: {
         labels: data.xlabels,
         datasets: [{
-            label: 'Weight Growth Chart',
+            label: 'Weight Chart',
             data: data.yweight,
             fill: false,
             backgroundColor: 
