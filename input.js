@@ -6,19 +6,19 @@ let input = [
       weightHistory: [
         {
           weight: 65,
-          date: '1 September 2020',
+          date: '2020-09-01',
         },
         {
           weight: 67,
-          date: '2 September 2020',
+          date: '2020-09-02',
         },
         {
           weight: 69,
-          date: '3 September 2020',
+          date: '2020-09-03',
         },
         {
           weight: 63,
-          date: '8 September 2020',
+          date: '2020-09-04',
         },
       ],
     },
@@ -28,23 +28,22 @@ let input = [
       weightHistory: [
         {
           weight: 70,
-          date: '5 September 2020',
+          date: '2020-09-05',
         },
         {
           weight: 72,
-          date: '11 September 2020',
+          date: '2020-09-06',
         },
         {
           weight: 69,
-          date: '15 September 2020',
+          date: '2020-09-07',
         },
         {
           weight: 71,
-          date: '20 September 2020',
+          date: '2020-09-08',
         },
       ],
     },
   ];
 
   export default input;
-  
