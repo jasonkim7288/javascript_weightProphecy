@@ -1,6 +1,5 @@
 export default function updateHistory(user) {
     let table = document.querySelector('table');
-    table.classList.add('table');
     table.innerHTML = '';
 
     user.weightHistory.forEach((weightInfo, index) => {
@@ -15,9 +14,9 @@ export default function updateHistory(user) {
         weight.textContent = weightInfo.weight + ' kg'
         tableRow.appendChild(weight);
 
-        let iconDiv = document.createElement('div');
-        iconDiv.style.fontSize = '1.5em';
+        let iconDiv = document.createElement('td');
         iconDiv.classList.add ('text-danger');
+
         tableRow.appendChild(iconDiv);
 
         let icon = document.createElement('i');

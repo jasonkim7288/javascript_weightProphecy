@@ -1,0 +1,27 @@
+#table-wrapper {
+    height: 220px;
+    overflow: auto;
+}
+
+#result-empty, #result-wrapper {
+    height: 300px;
+}
+
+.count-effect {
+    animation: expendEffect 0.7s linear;
+}
+
+@keyframes expendEffect {
+    from {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(0.92);
+    }
+    to {
+        transform: scale(1);
+    }
+}

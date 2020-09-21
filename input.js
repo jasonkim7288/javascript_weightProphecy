@@ -2,7 +2,7 @@
 let input = [
     {
       name: 'Jason',
-      age: 30,
+      age: 79,
       weightHistory: [
         {
           weight: 65,
