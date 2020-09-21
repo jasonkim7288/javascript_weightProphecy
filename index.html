@@ -33,7 +33,7 @@
             <select name="namesList" id="namesList"></select>
             <input id="ok" type="submit" value="OK">
         </div>
-        <br>    
+        <br>
         <div class="row">
             <form id="newUser">
                 <input type="text" name="name" id="name" placeholder="Input your name" />
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="container" id="page-2">
+    <div class="container mt-5" id="page-2">
         <div class="row">
             <div class="stat col-12 col-sm-6">
                 <div>
@@ -54,8 +54,8 @@
                     </form>
                 </div>
                 <div id="message"></div>
-                <div>
-                    <table>
+                <div id="table-wrapper" class="mt-5">
+                    <table class="table">
                         <tr>
                             <td>Date</td>
                             <td>Weight</td>
@@ -67,14 +67,22 @@
                 <div class="chart-container" style="position: relative; height:40vh; width:30vw">
                     <canvas id="chart"></canvas>
                 </div>
-            
-            </div>
-            <div class="predict col-12 col-sm-6">
-                <input type="date" name="prediction-date" id="prediction-date">
-                <button id="predict-weight">Predict weight</button>
 
-                <h2>Your weight</h2>
-                <div class="display-4">72Kg</div>
+            </div>
+            <div class="predict col-12 col-md-6 mt-5 mt-md-0">
+                <h3 class="text-center">Check the Prophecy</h3>
+                <div>
+                    <input class="form-control mr-3 mt-4" type="date" name="prediction-date" id="prediction-date">
+                    <p class="text-danger d-none" id="prediction-date-error"></p>
+                    <button class="form-control btn btn-primary btn-block mt-4" id="predict-weight">Predict weight<i class="fas fa-magic pl-3"></i></button>
+                    <div id="result-empty"></div>
+                    <div id="result-wrapper" class="d-none">
+                        <h2 class="text-center mt-4">Your weight on</h2>
+                        <h2 class="text-center" id="result-date"></h2>
+                        <h2 class="text-center">will be</h2>
+                        <div class="display-4 text-center text-success" id="result-weight"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
