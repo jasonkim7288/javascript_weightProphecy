@@ -1,4 +1,5 @@
 export default function updateHistory(user) {
+    console.log(user)
     let table = document.querySelector('table');
     table.classList.add('table');
     table.innerHTML = '';
