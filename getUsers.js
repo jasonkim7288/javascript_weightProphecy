@@ -12,8 +12,8 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     option.text= data.name;
                     option.className="dropdown-item";
                     x.add(option);
-                    document.getElementById('page-2').style.visibility = "hidden";
-                    document.getElementById('page-1').style.visibility = "visible";
+                    document.getElementById('page-2').classList.add('d-none');
+                    document.getElementById('page-1').classList.remove('d-none');
                 });
                }
                )
@@ -37,7 +37,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                 console.log(returnedUser);
                 user = JSON.parse(JSON.stringify(returnedUser));
                 document.getElementById('page-1').classList.add('d-none');
-                document.getElementById('page-2').style.visibility = "visible";
+                document.getElementById('page-2').classList.remove('d-none');
                 showAvatar();
                 updateHistory(user);
             })
@@ -53,7 +53,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
     document.getElementById('ok').addEventListener('click', ()=>{
         // document.getElementById('newUser').style.visibility = "hidden";
         document.getElementById('page-1').classList.add('d-none');
-        document.getElementById('page-2').style.visibility = "visible";
+        document.getElementById('page-2').classList.remove('d-none');
 
         let input = document.getElementById('namesList').value;
         axios.get(apiUrl)
@@ -86,7 +86,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     speechSynthesis.speak(utterance);
                     document.getElementById('message').textContent='Entry is already created for date ' + weightLog.date;
                 }
-                else 
+                else
                 user.weightHistory.push(weightLog);
             }
             else
