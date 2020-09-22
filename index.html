@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weight Prophecy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
@@ -13,13 +15,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script type="module" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -27,70 +29,75 @@
 </head>
 
 <body>
-   <div class="container">
-    <div class="jumbotron" id='page-1'>
-        <div class="row">
-            <select name="namesList" id="namesList"></select>
-            <input id="ok" type="submit" value="OK">
-        </div>
-        <br>
-        <div class="row">
-            <form id="newUser">
-                <input type="text" name="name" id="name" placeholder="Input your name" />
-                <input type="text" name="age" id="age" placeholder="Input your age" />
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
-
-    <div class="container mt-5" id="page-2">
-        <div class="row">
-            <div class="stat col-12 col-sm-6">
+    <div class="container">
+        <div class="jumbotron" id='page-1'>
+            <div class="row">
+                <div class="dropdown">
+                    <select class="btn btn-info dropdown-toggle" type="button" name="namesList" id="namesList"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></select>
+                </div>
                 <div>
-                <h3 class="text-center">Enter Latest Weight</h3>
-                    <form id="updateUser">
-                        <input type="date" name="inputDate" id="inputDate">
-                       <input type="text" name="weight" id="weight" placeholder="Enter weight">
-                        <input class="btn btn-primary btn-block mt-4" id="input-weight" type="submit" value="Input weight">
-                    </form>
+                    <input class="btn btn-outline-info" id="ok" type="submit" type="button" value="OK">
                 </div>
-                <div id="message"></div>
-                <div id="table-wrapper" class="mt-5">
-                <h3 class="text-center">Your Weight History</h3>
-                    <table class="table">
-                        <tr>
-                            <td>Date</td>
-                            <td>Weight</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="chart-container" style="position: relative; height:40vh; width:30vw;margin-top: 10px;">
-                <h3 class="text-center">Your Weight Chart</h3>
-                    <canvas id="chart"></canvas>
-                </div>
-
             </div>
-            <div class="predict col-12 col-md-6 mt-5 mt-md-0">
-                <h3 class="text-center">Check the Prophecy</h3>
-                <div>
-                    <input class="form-control mr-3 mt-4" type="date" name="prediction-date" id="prediction-date">
-                    <p class="text-danger d-none" id="prediction-date-error"></p>
-                    <button class="form-control btn btn-primary btn-block mt-4" id="predict-weight">Predict weight<i class="fas fa-magic pl-3"></i></button>
-                    <div id="result-empty"></div>
-                    <div id="result-wrapper" class="d-none">
-                        <h2 class="text-center mt-4">Your weight on</h2>
-                        <h2 class="text-center" id="result-date"></h2>
-                        <h2 class="text-center">will be</h2>
-                        <div class="display-4 text-center text-success" id="result-weight"></div>
+            <div class="row">
+                <form id="newUser">
+                    <input type="text" name="name" id="name" placeholder="Input your name" />
+                    <input type="text" name="age" id="age" placeholder="Input your age" />
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <div class="container mt-5" id="page-2">
+            <div class="row">
+                <div class="stat col-12 col-md-6">
+                    <div>
+                        <h3 class="text-center">Enter Latest Weight</h3>
+                        <form id="updateUser">
+                            <input type="date" name="inputDate" id="inputDate">
+                            <input type="text" name="weight" id="weight" placeholder="Enter weight">
+                            <input class="btn btn-primary btn-block mt-4" id="input-weight" type="submit"
+                                value="Input weight">
+                        </form>
+                    </div>
+                    <div id="message"></div>
+                    <h3 class="text-center">Your Weight History</h3>
+                    <div id="table-wrapper" class="mt-5">
+                        <table class="table">
+                            <tr>
+                                <td>Date</td>
+                                <td>Weight</td>
+                                <td><i class="far fa-trash-alt"></i></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="chart-container" style="position: relative; height:40vh; width:30vw;margin-top: 10px;">
+                        <h3 class="text-center">Your Weight Chart</h3>
+                        <canvas id="chart"></canvas>
+                    </div>
+
+                </div>
+                <div class="predict col-12 col-md-6 mt-5 mt-md-0">
+                    <h3 class="text-center">Check the Prophecy</h3>
+                    <div>
+                        <input class="form-control mr-3 mt-4" type="date" name="prediction-date" id="prediction-date">
+                        <p class="text-danger d-none" id="prediction-date-error"></p>
+                        <button class="form-control btn btn-primary btn-block mt-4" id="predict-weight">Predict weight<i class="fas fa-magic pl-3"></i></button>
+                        <div id="result-empty"></div>
+                        <div id="result-wrapper" class="d-none">
+                            <h2 class="text-center mt-4">Your weight on</h2>
+                            <h2 class="text-center" id="result-date"></h2>
+                            <h2 class="text-center">will be</h2>
+                            <div class="display-4 text-center text-success" id="result-weight"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-   </div>
+    </div>
 
 </body>
 
