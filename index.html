@@ -25,7 +25,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script type="module" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 </head>
 
 <body>
@@ -43,39 +42,39 @@
             <div class="form-inline">
                 <select class="form-control mr-2 mt-2" name="namesList" id="namesList"
                     ></select>
-                <input class="form-control btn btn-outline-info mr-2 mt-2" id="ok" type="submit" type="button" value="OK">
+                <input class="form-control btn btn-info mr-2 mt-2" id="ok" type="submit" type="button" value="OK">
             </div>
             <p class="py-0 my-3 ml-5">or</p>
             <form class="form-inline" id="newUser">
                 <input class="form-control mr-2 mt-2" type="text" name="name" id="name" placeholder="Input your name" />
                 <input class="form-control mr-2 mt-2" type="text" name="age" id="age" placeholder="Input your age" />
-                <input class="form-control btn btn-outline-info mr-2 mt-2" type="submit" value="Submit">
+                <input class="form-control btn btn-info mr-2 mt-2" type="submit" value="Submit">
             </form>
         </div>
     </div>
-    <div class="container">
-        <div class="container mt-5 d-none" id="page-2">
+    <div class="mt-5 d-none" id="page-2">
+        <div class="container">
             <div class="row">
                 <div class="stat col-12 col-md-6 mt-5 mt-md-0">
-                        <h3 class="text-center">Enter Latest Weight</h3>
-                        <div>
-                            <form id="updateUser" class="form-row">
-                                <div class="align-items-center">
-                                    <div class="col-auto ">
-                                      <label class="sr-only" for="inlineFormInput">Date</label>
-                                      <input type="date" class="form-control  mr-3 mt-4" name="inputDate" id="inputDate">
-                                    </div>
-                                    <div class="col-auto">
-                                        <label class="sr-only" for="inlineFormInput">Weight</label>
-                                        <input type="test" class="form-control  mr-3 mt-4" name="weight" id="weight" placeholder="Enter weight">
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" id="input-weight" class="btn btn-primary mr-3 mt-4">Input weight</button>
-                                    </div>
-
+                    <h3 class="text-center">Enter Latest Weight</h3>
+                    <div>
+                        <form id="updateUser" class="form-row">
+                            <div class="align-items-center">
+                                <div class="col-auto ">
+                                    <label class="sr-only" for="inlineFormInput">Date</label>
+                                    <input type="date" class="form-control  mr-3 mt-4" name="inputDate" id="inputDate">
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-auto">
+                                    <label class="sr-only" for="inlineFormInput">Weight</label>
+                                    <input type="test" class="form-control  mr-3 mt-4" name="weight" id="weight" placeholder="Enter weight">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" id="input-weight" class="btn btn-primary mr-3 mt-4">Input weight</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
 
                     <div id="message"></div>
                     <h3 class="text-center">Your Weight History</h3>
@@ -93,7 +92,6 @@
                         <h3 class="text-center">Your Weight Chart</h3>
                         <canvas id="chart"></canvas>
                     </div>
-
                 </div>
                 <div class="predict col-12 col-md-6 mt-5 mt-md-0">
                     <h3 class="text-center">Check the Prophecy</h3>
@@ -113,13 +111,13 @@
             </div>
         </div>
     </div>
-<!-- Footer -->
-<footer class="pt-4">
-    <!-- Copyright -->
-    <div class="text-center py-3">© 2020 Copyright: <strong>Jason Kim & Kalyani Arikati</strong>
-    </div>
-    <!-- Copyright -->
-  </footer>
+
+    <!-- Footer -->
+    <footer class="pt-4">
+        <!-- Copyright -->
+        <div class="text-center">© 2020 Copyright: <strong>Jason Kim & Kalyani Arikati</strong>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -23,7 +23,7 @@ let getUsers = () => {
             page2.classList.add('d-none');
             page1.classList.remove('d-none');
         })
-        .catch(err => console.err(err))
+        .catch(err => console.error(err))
 }
 
 // add new user method
@@ -68,7 +68,7 @@ document.getElementById('ok').addEventListener('click', () => {
             showAvatar();
             updateHistory(user);
         })
-        .catch(err => console.err(err))
+        .catch(err => console.error(err))
 });
 
 // add new weight to the history
@@ -85,22 +85,30 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
             utterance.rate = 0.7
             utterance.text = 'Entry is already created for date ' + weightLog.date;
             speechSynthesis.speak(utterance);
+            message.style.color= 'red';
             message.textContent = 'Entry is already created for date ' + weightLog.date;
-            
+
         } else {
             user.weightHistory.push(weightLog);
+            user.weightHistory.sort(function (a, b) {
+                if (a.date > b.date) return 1;
+                if (a.date< b.date) return -1;
+                return 0;
+            });
+            message.style.color= 'green';
             message.textContent = "Weight Logged Successfully";
         }
             updateForm.reset();
-            
+
     } else {
+        message.style.color= 'red';
         message.textContent = "Enter valid values";
     }
     axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
         .then((user) => {
             updateHistory(user.data);
         })
-        .catch((err) => console.err(err));
+        .catch((err) => console.error(err));
         setTimeout(() =>{
             message.innerHTML = '';
         }, 7000);
