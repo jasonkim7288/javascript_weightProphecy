@@ -6,7 +6,7 @@ import weightChart from './weightChart.js';
         axios.get(' http://localhost:3000/users')
             .then(res => {
                 let x = document.getElementById("namesList");
-                res.data.forEach((data) =>  { 
+                res.data.forEach((data) =>  {
                     let option = document.createElement("option");
                     option.text= data.name;
                     console.log(option);
@@ -18,7 +18,7 @@ import weightChart from './weightChart.js';
                )
             .catch(err => console.err(err))
     }
-    
+
     // get form id
     let form = document.getElementById('newUser');
     let updateForm = document.getElementById('updateUser');
@@ -34,10 +34,10 @@ import weightChart from './weightChart.js';
         .then((user) => console.log(user))
         .catch((err) => console.err(err));
     }
-    
+
     // call addUser function upon form submit
     form.addEventListener('submit', addUser);
-    
+
     var user={};
 
     // show weight history, weight chart for an existing user
@@ -72,15 +72,15 @@ import weightChart from './weightChart.js';
                     date: updateForm.inputDate.value,
                 }
                 console.log(user[0].weightHistory.push(weightLog));
-                
+
             }
             else
                 {
                     document.getElementById('message').textContent="Enter valid values";
-                   
+
                 }
             axios.patch(`http://localhost:3000/users/${user[0].id}`, user[0])
-                .then((user) =>{ 
+                .then((user) =>{
                     updateHistory(user.data);
                     weightChart(user.data.weightHistory);
                 })
@@ -89,7 +89,6 @@ import weightChart from './weightChart.js';
         });
 
 
-    export {getUsers};
+    export {getUsers, user};
 
-    
-    
+
