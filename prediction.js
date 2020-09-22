@@ -15,8 +15,11 @@ document.getElementById('predict-weight').addEventListener('click', (e) => {
     const resultEmpty = document.getElementById('result-empty');
     const resultWrapper = document.getElementById('result-wrapper');
     const predictionDateError = document.getElementById('prediction-date-error');
-    // Check if the date is empty
-    if(predictionDateStr) {
+    // check if weightHistory is empty
+    if (user.weightHistory.length === 0) {
+        predictionDateError.textContent = 'Please input the weight data';
+    // check if the date is empty
+    } else if (predictionDateStr) {
         const firstHistoryDate = new Date(user.weightHistory[0].date);
         const lastHistoryDate = new Date(user.weightHistory[user.weightHistory.length - 1].date);
         const eightyDate = getEightyDate (firstHistoryDate, user.age);

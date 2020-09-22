@@ -4,12 +4,6 @@ export default function updateHistory(user) {
     let table = document.querySelector('table');
     table.innerHTML = '';
 
-    user.weightHistory.sort(function (a, b) {
-        if (a.date > b.date) return 1;
-        if (a.date< b.date) return -1;
-        return 0;
-      });
-      
     user.weightHistory.forEach((weightInfo, index) => {
         let tableRow = document.createElement('tr');
         table.appendChild(tableRow);
@@ -34,7 +28,7 @@ export default function updateHistory(user) {
             if(confirm('Are you sure?')){
                 user.weightHistory.splice(index, 1);
                 axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
-                .then((response) =>{ 
+                .then((response) =>{
                     user=response.data;
                     updateHistory(user);
                 })
