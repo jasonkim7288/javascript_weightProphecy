@@ -1,11 +1,11 @@
 import { convertDateToString, getScaledValue, getActualWeight, getEightyDate } from './libs/utilities.js';
-import user from './input.js';
 import runCountAnimation from './resultAnimation.js';
 import * as Constants from './libs/constants.js';
+import { user } from './getUsers.js';
 
 // when 'Predict weight' button is clicked, it is time to start predicting
 //
-// I MUST change user[0] later
+// I MUST change user later
 //
 document.getElementById('predict-weight').addEventListener('click', (e) => {
     e.target.disabled = true;
@@ -17,9 +17,9 @@ document.getElementById('predict-weight').addEventListener('click', (e) => {
     const predictionDateError = document.getElementById('prediction-date-error');
     // Check if the date is empty
     if(predictionDateStr) {
-        const firstHistoryDate = new Date(user[0].weightHistory[0].date);
-        const lastHistoryDate = new Date(user[0].weightHistory[user[0].weightHistory.length - 1].date);
-        const eightyDate = getEightyDate (firstHistoryDate, user[0].age);
+        const firstHistoryDate = new Date(user.weightHistory[0].date);
+        const lastHistoryDate = new Date(user.weightHistory[user.weightHistory.length - 1].date);
+        const eightyDate = getEightyDate (firstHistoryDate, user.age);
 
         // Check if the date is within the range
         if ((predictionDate.getTime() <= lastHistoryDate.getTime()) || (predictionDate.getTime() >= eightyDate.getTime())) {
@@ -34,7 +34,7 @@ document.getElementById('predict-weight').addEventListener('click', (e) => {
             const resultDate = document.getElementById('result-date');
             resultDate.textContent = `${predictionDate.getDate()} ${Constants.monthNames[predictionDate.getMonth()]} ${predictionDate.getFullYear()}`;
 
-            predict(user[0], predictionDateStr)
+            predict(user, predictionDateStr)
             .then(res => {
                 console.log('res:', res, getActualWeight(40, 100, res));
                 resultElement.classList.remove('text-danger');

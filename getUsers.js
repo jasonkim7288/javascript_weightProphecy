@@ -7,7 +7,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         axios.get(apiUrl)
             .then(res => {
                 let x = document.getElementById("namesList");
-                res.data.forEach((data) =>  { 
+                res.data.forEach((data) =>  {
                     let option = document.createElement("option");
                     option.text= data.name;
                     // console.log(option);
@@ -19,7 +19,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                )
             .catch(err => console.err(err))
     }
-    
+
     // get form id
     let form = document.getElementById('newUser');
     let updateForm = document.getElementById('updateUser');
@@ -35,10 +35,10 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         .then((user) => console.log(user))
         .catch((err) => console.err(err));
     }
-    
+
     // call addUser function upon form submit
     form.addEventListener('submit', addUser);
-    
+
     var user={};
 
     // show weight history, weight chart for an existing user
@@ -81,7 +81,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
             else
                 {
                     document.getElementById('message').textContent="Enter valid values";
-                   
+
                 }
             axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
                 .then((user) =>{ 
@@ -93,7 +93,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         });
 
 
-    export {getUsers};
+    export {getUsers, user};
 
-    
-    
+
