@@ -9,6 +9,7 @@ export default async function weightChart(weightHistory){
         datasets: [{
             label: 'Weight Chart',
             data: data.yweight,
+            pointRadius: 0,
             fill: false,
             backgroundColor: 
                 'rgba(54, 162, 235, 0.2)'

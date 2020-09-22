@@ -4,6 +4,12 @@ export default function updateHistory(user) {
     let table = document.querySelector('table');
     table.innerHTML = '';
 
+    user.weightHistory.sort(function (a, b) {
+        if (a.date > b.date) return 1;
+        if (a.date< b.date) return -1;
+        return 0;
+      });
+      
     user.weightHistory.forEach((weightInfo, index) => {
         let tableRow = document.createElement('tr');
         table.appendChild(tableRow);
