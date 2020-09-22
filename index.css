@@ -3,12 +3,17 @@
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: rgb(245, 228, 231);
+body, .jumbotron{
+    background-color: rgb(206, 231, 252);
+   
+}
+.jumbotron{
+    background-color: rgb(223, 244, 248);
+    background-image: url('./weight2.PNG');
 }
 
 .navbar {
-    background-color: #e9ecef;
+    background-color: #9ec5ec;
 }
 
 .navbar-brand {
