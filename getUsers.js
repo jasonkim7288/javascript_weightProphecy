@@ -19,8 +19,8 @@ let page2=document.getElementById('page-2');
                     option.text= data.name;
                     option.className="dropdown-item";
                     x.add(option);
-                    page2.style.visibility = "hidden";
-                    page1.style.visibility = "visible";
+                    page2.classList.add('d-none');
+                    page1.classList.remove('d-none');
                 });
                }
                )
@@ -30,15 +30,22 @@ let page2=document.getElementById('page-2');
     
 
     // add new user method
-    let addUser=()=>{
-        let user = {
+    let addUser=(event)=>{
+        event.preventDefault();
+        let userInput = {
             name: form.name.value,
-              age: form.age.value,
-              weightHistory:[]
+            age: form.age.value,
+            weightHistory:[]
         }
-        axios.post(apiUrl, user)
-        .then((user) => console.log(user))
-        .catch((err) => console.err(err));
+        axios.post(apiUrl, userInput)
+            .then((res) => {
+                user = JSON.parse(JSON.stringify(res.data));
+                page1.classList.add('d-none');
+                page2.classList.remove('d-none');
+                showAvatar();
+                updateHistory(user);
+            })
+            .catch((err) => console.error(err));
     }
 
     // call addUser function upon form submit
@@ -48,8 +55,9 @@ let page2=document.getElementById('page-2');
 
     // show weight history, weight chart for an existing user
     document.getElementById('ok').addEventListener('click', ()=>{
-        document.getElementById('newUser').style.visibility = "hidden";
-        page2.style.visibility = "visible";
+        // document.getElementById('newUser').style.visibility = "hidden";
+        page1.classList.add('d-none');
+        page2.classList.remove('d-none');
 
         let input = document.getElementById('namesList').value;
         axios.get(apiUrl)
