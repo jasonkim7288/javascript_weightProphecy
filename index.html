@@ -29,31 +29,32 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron" id='page-1'>
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold" href="/">Weight Prophecy</a>
             <div id="user-info">
                 <p id="user-name"></p>
                 <img src="" alt="" id="avatar-img"/>
             </div>
-            <div class="row">
-                <div class="dropdown">
-                    <select class="btn btn-info dropdown-toggle" type="button" name="namesList" id="namesList"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></select>
-                </div>
-                <div>
-                    <input class="btn btn-outline-info" id="ok" type="submit" type="button" value="OK">
-                </div>
-            </div>
-            <div class="row">
-                <form id="newUser">
-                    <input type="text" name="name" id="name" placeholder="Input your name" />
-                    <input type="text" name="age" id="age" placeholder="Input your age" />
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
         </div>
-
-        <div class="container mt-5" id="page-2">
+    </nav>
+    <div class="jumbotron mt-0" id='page-1'>
+        <div class="container">
+            <div class="form-inline">
+                <select class="form-control dropdown-toggle mr-2" name="namesList" id="namesList"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></select>
+                <input class="btn btn-outline-info" id="ok" type="submit" type="button" value="OK">
+            </div>
+            <p class="py-0 my-3 ml-5">or</p>
+            <form class="form-inline" id="newUser">
+                <input class="form-control mr-2" type="text" name="name" id="name" placeholder="Input your name" />
+                <input class="form-control mr-2" type="text" name="age" id="age" placeholder="Input your age" />
+                <input class="form-control btn btn-outline-info" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container mt-5 d-none" id="page-2">
             <div class="row">
                 <div class="stat col-12 col-md-6 mt-5 mt-md-0">
                         <h3 class="text-center">Enter Latest Weight</h3>

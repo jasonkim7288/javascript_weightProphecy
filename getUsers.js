@@ -12,8 +12,8 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     option.text= data.name;
                     option.className="dropdown-item";
                     x.add(option);
-                    document.getElementById('page-2').style.visibility = "hidden";
-                    document.getElementById('page-1').style.visibility = "visible";
+                    document.getElementById('page-2').classList.add('d-none');
+                    document.getElementById('page-1').classList.remove('d-none');
                 });
                }
                )
@@ -25,15 +25,22 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
     let updateForm = document.getElementById('updateUser');
 
     // add new user method
-    let addUser=()=>{
-        let user = {
+    let addUser=(event)=>{
+        event.preventDefault();
+        let userInput = {
             name: form.name.value,
-              age: form.age.value,
-              weightHistory:[]
+            age: form.age.value,
+            weightHistory:[]
         }
-        axios.post(apiUrl, user)
-        .then((user) => console.log(user))
-        .catch((err) => console.err(err));
+        axios.post(apiUrl, userInput)
+            .then((res) => {
+                user = JSON.parse(JSON.stringify(res.data));
+                document.getElementById('page-1').classList.add('d-none');
+                document.getElementById('page-2').classList.remove('d-none');
+                showAvatar();
+                updateHistory(user);
+            })
+            .catch((err) => console.error(err));
     }
 
     // call addUser function upon form submit
@@ -43,8 +50,9 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
 
     // show weight history, weight chart for an existing user
     document.getElementById('ok').addEventListener('click', ()=>{
-        document.getElementById('newUser').style.visibility = "hidden";
-        document.getElementById('page-2').style.visibility = "visible";
+        // document.getElementById('newUser').style.visibility = "hidden";
+        document.getElementById('page-1').classList.add('d-none');
+        document.getElementById('page-2').classList.remove('d-none');
 
         let input = document.getElementById('namesList').value;
         axios.get(apiUrl)
@@ -77,7 +85,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     speechSynthesis.speak(utterance);
                     document.getElementById('message').textContent='Entry is already created for date ' + weightLog.date;
                 }
-                else 
+                else
                 user.weightHistory.push(weightLog);
             }
             else
