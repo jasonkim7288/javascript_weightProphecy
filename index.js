@@ -3,6 +3,5 @@ import setColor from './input.js';
 import prediction from './prediction.js';
 
 getUsers();
-setInterval(setColor, 2000);
-// setTimeout(() => {  window .location.reload() }, 3000);
+// setInterval(setColor, 2000);
 

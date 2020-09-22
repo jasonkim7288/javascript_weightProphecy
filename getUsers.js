@@ -1,5 +1,4 @@
 import updateHistory from './updateHistory.js';
-import weightChart from './weightChart.js';
 import showAvatar from './showAvatar.js';
 
 let apiUrl='https://myrestapi01.herokuapp.com/users'
@@ -11,7 +10,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                 res.data.forEach((data) =>  {
                     let option = document.createElement("option");
                     option.text= data.name;
-                    // console.log(option);
+                    option.className="dropdown-item";
                     x.add(option);
                     document.getElementById('page-2').style.visibility = "hidden";
                     document.getElementById('page-1').style.visibility = "visible";
@@ -48,7 +47,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         document.getElementById('page-2').style.visibility = "visible";
 
         let input = document.getElementById('namesList').value;
-        // console.log(input)
         axios.get(apiUrl)
                 .then((res => {
                     console.log(res)
@@ -57,7 +55,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     console.log(user);
                     showAvatar();
                     updateHistory(user);
-                    weightChart(user.weightHistory);
                 })
                 )
             .catch(err => console.err(err))
@@ -67,9 +64,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
     // add new weight to the history
     document.getElementById('input-weight').addEventListener('click', (e)=>{
         e.preventDefault();
-        // console.log(user);
-        // console.log(updateForm.weight.value);
-        // console.log(updateForm.inputDate.value);
         if(updateForm.weight.value && updateForm.inputDate.value)
             {
                 let weightLog = {
@@ -77,8 +71,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     date: updateForm.inputDate.value,
                 }
                 user.weightHistory.push(weightLog)
-                // console.log();
-
             }
             else
                 {
@@ -88,7 +80,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
             axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
                 .then((user) =>{
                     updateHistory(user.data);
-                    weightChart(user.data.weightHistory);
                 })
                 .catch((err) => console.err(err));
 

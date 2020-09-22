@@ -1,5 +1,6 @@
+import weightChart from './weightChart.js';
+
 export default function updateHistory(user) {
-    console.log(user)
     let table = document.querySelector('table');
     table.innerHTML = '';
 
@@ -17,7 +18,6 @@ export default function updateHistory(user) {
 
         let iconDiv = document.createElement('td');
         iconDiv.classList.add ('text-danger');
-
         tableRow.appendChild(iconDiv);
 
         let icon = document.createElement('i');
@@ -25,8 +25,16 @@ export default function updateHistory(user) {
         iconDiv.appendChild(icon);
 
         icon.addEventListener('click', () => {
-            user.weightHistory.splice(index, 1);
-            updateHistory(user);
+            if(confirm('Are you sure?')){
+                user.weightHistory.splice(index, 1);
+                axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
+                .then((response) =>{ 
+                    user=response.data;
+                    updateHistory(user);
+                })
+                .catch((err) => console.log(err));
+            }
         })
     })
+    weightChart(user.weightHistory);
 }
