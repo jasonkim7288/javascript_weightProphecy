@@ -33,15 +33,14 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
             weightHistory:[]
         }
         axios.post(apiUrl, userInput)
-            .then((returnedUser) => {
-                console.log(returnedUser);
-                user = JSON.parse(JSON.stringify(returnedUser));
+            .then((res) => {
+                user = JSON.parse(JSON.stringify(res.data));
                 document.getElementById('page-1').classList.add('d-none');
                 document.getElementById('page-2').classList.remove('d-none');
                 showAvatar();
                 updateHistory(user);
             })
-            .catch((err) => console.err(err));
+            .catch((err) => console.error(err));
     }
 
     // call addUser function upon form submit
