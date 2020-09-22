@@ -1,7 +1,14 @@
 import updateHistory from './updateHistory.js';
 import showAvatar from './showAvatar.js';
 
-let apiUrl='https://myrestapi01.herokuapp.com/users'
+let apiUrl='https://myrestapi01.herokuapp.com/users';
+// get form id
+let form = document.getElementById('newUser');
+let updateForm = document.getElementById('updateUser');
+let message=document.getElementById('message');
+let page1=document.getElementById('page-1');
+let page2=document.getElementById('page-2');
+
 // get all users to show in users dropdown
     let getUsers=() => {
         axios.get(apiUrl)
@@ -12,17 +19,15 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     option.text= data.name;
                     option.className="dropdown-item";
                     x.add(option);
-                    document.getElementById('page-2').style.visibility = "hidden";
-                    document.getElementById('page-1').style.visibility = "visible";
+                    page2.style.visibility = "hidden";
+                    page1.style.visibility = "visible";
                 });
                }
                )
             .catch(err => console.err(err))
     }
 
-    // get form id
-    let form = document.getElementById('newUser');
-    let updateForm = document.getElementById('updateUser');
+    
 
     // add new user method
     let addUser=()=>{
@@ -44,7 +49,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
     // show weight history, weight chart for an existing user
     document.getElementById('ok').addEventListener('click', ()=>{
         document.getElementById('newUser').style.visibility = "hidden";
-        document.getElementById('page-2').style.visibility = "visible";
+        page2.style.visibility = "visible";
 
         let input = document.getElementById('namesList').value;
         axios.get(apiUrl)
@@ -70,19 +75,25 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     weight: parseInt(updateForm.weight.value),
                     date: updateForm.inputDate.value,
                 }
+                
                 if (user.weightHistory.find(({ date }) => date === weightLog.date)){
                     let utterance = new SpeechSynthesisUtterance();
                     utterance.rate = 0.7
                     utterance.text = 'Entry is already created for date ' + weightLog.date;
                     speechSynthesis.speak(utterance);
-                    document.getElementById('message').textContent='Entry is already created for date ' + weightLog.date;
+                    message.textContent='Entry is already created for date ' + weightLog.date;
+                    
                 }
-                else 
-                user.weightHistory.push(weightLog);
+                else {
+                    user.weightHistory.push(weightLog);
+                    message.textContent="Weight Logged Successfully"
+                }
+                updateForm.weight.value="";
+                updateForm.date.value="";
             }
             else
                 {
-                    document.getElementById('message').textContent="Enter valid values";
+                    message.textContent="Enter valid values";
 
                 }
             axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
@@ -90,7 +101,6 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     updateHistory(user.data);
                 })
                 .catch((err) => console.err(err));
-
         });
 
 
