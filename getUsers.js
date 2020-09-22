@@ -1,15 +1,16 @@
 import updateHistory from './updateHistory.js';
 import weightChart from './weightChart.js';
 
+let apiUrl='https://myrestapi01.herokuapp.com/users'
 // get all users to show in users dropdown
     let getUsers=() => {
-        axios.get(' http://localhost:3000/users')
+        axios.get(apiUrl)
             .then(res => {
                 let x = document.getElementById("namesList");
                 res.data.forEach((data) =>  {
                     let option = document.createElement("option");
                     option.text= data.name;
-                    console.log(option);
+                    // console.log(option);
                     x.add(option);
                     document.getElementById('page-2').style.visibility = "hidden";
                     document.getElementById('page-1').style.visibility = "visible";
@@ -30,7 +31,7 @@ import weightChart from './weightChart.js';
               age: form.age.value,
               weightHistory:[]
         }
-        axios.post('http://localhost:3000/users', user)
+        axios.post(apiUrl, user)
         .then((user) => console.log(user))
         .catch((err) => console.err(err));
     }
@@ -46,13 +47,15 @@ import weightChart from './weightChart.js';
         document.getElementById('page-2').style.visibility = "visible";
 
     let input = document.getElementById('namesList').value;
-        console.log(input)
-        axios.get('http://localhost:3000/users')
+        // console.log(input)
+        axios.get(apiUrl)
                 .then((res => {
-                    user = res.data.filter((user) => { return user.name === input});
-                    console.log(user[0])
-                    updateHistory(user[0]);
-                    weightChart(user[0].weightHistory);
+                    console.log(res)
+                    let found = res.data.filter((user) => { return user.name === input});
+                    user= found[0];
+                    console.log(user)
+                    updateHistory(user);
+                    weightChart(user.weightHistory);
                 })
                 )
             .catch(err => console.err(err))
@@ -71,16 +74,17 @@ import weightChart from './weightChart.js';
                     weight: parseInt(updateForm.weight.value),
                     date: updateForm.inputDate.value,
                 }
-                console.log(user[0].weightHistory.push(weightLog));
-
+                user.weightHistory.push(weightLog)
+                // console.log();
+                
             }
             else
                 {
                     document.getElementById('message').textContent="Enter valid values";
 
                 }
-            axios.patch(`http://localhost:3000/users/${user[0].id}`, user[0])
-                .then((user) =>{
+            axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
+                .then((user) =>{ 
                     updateHistory(user.data);
                     weightChart(user.data.weightHistory);
                 })
