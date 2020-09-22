@@ -1,5 +1,6 @@
 import updateHistory from './updateHistory.js';
 import weightChart from './weightChart.js';
+import showAvatar from './showAvatar.js';
 
 let apiUrl='https://myrestapi01.herokuapp.com/users'
 // get all users to show in users dropdown
@@ -46,14 +47,15 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         document.getElementById('newUser').style.visibility = "hidden";
         document.getElementById('page-2').style.visibility = "visible";
 
-    let input = document.getElementById('namesList').value;
+        let input = document.getElementById('namesList').value;
         // console.log(input)
         axios.get(apiUrl)
                 .then((res => {
                     console.log(res)
                     let found = res.data.filter((user) => { return user.name === input});
                     user= found[0];
-                    console.log(user)
+                    console.log(user);
+                    showAvatar();
                     updateHistory(user);
                     weightChart(user.weightHistory);
                 })
@@ -76,7 +78,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                 }
                 user.weightHistory.push(weightLog)
                 // console.log();
-                
+
             }
             else
                 {
@@ -84,7 +86,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
 
                 }
             axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
-                .then((user) =>{ 
+                .then((user) =>{
                     updateHistory(user.data);
                     weightChart(user.data.weightHistory);
                 })
