@@ -90,8 +90,6 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
             user.weightHistory.push(weightLog);
             message.textContent = "Weight Logged Successfully"
         }
-        updateForm.weight.value = "";
-        updateForm.date.value = "";
     } else {
         message.textContent = "Enter valid values";
     }
