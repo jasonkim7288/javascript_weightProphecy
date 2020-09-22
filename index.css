@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: rgb(245, 228, 231);
+}
 
 .navbar {
     background-color: #e9ecef;
@@ -75,7 +78,3 @@
     margin: 20px;;
 }
 
-.predict, .stat{
-    margin-top: 5px;
-
-}

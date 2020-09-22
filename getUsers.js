@@ -79,7 +79,15 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
                     weight: parseInt(updateForm.weight.value),
                     date: updateForm.inputDate.value,
                 }
-                user.weightHistory.push(weightLog)
+                if (user.weightHistory.find(({ date }) => date === weightLog.date)){
+                    let utterance = new SpeechSynthesisUtterance();
+                    utterance.rate = 0.7
+                    utterance.text = 'Entry is already created for date ' + weightLog.date;
+                    speechSynthesis.speak(utterance);
+                    document.getElementById('message').textContent='Entry is already created for date ' + weightLog.date;
+                }
+                else 
+                user.weightHistory.push(weightLog);
             }
             else
                 {
