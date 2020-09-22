@@ -86,10 +86,13 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
             utterance.text = 'Entry is already created for date ' + weightLog.date;
             speechSynthesis.speak(utterance);
             message.textContent = 'Entry is already created for date ' + weightLog.date;
+            
         } else {
             user.weightHistory.push(weightLog);
-            message.textContent = "Weight Logged Successfully"
+            message.textContent = "Weight Logged Successfully";
         }
+            updateForm.reset();
+            
     } else {
         message.textContent = "Enter valid values";
     }
@@ -98,6 +101,9 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
             updateHistory(user.data);
         })
         .catch((err) => console.err(err));
+        setTimeout(() =>{
+            message.innerHTML = '';
+        }, 7000);
 });
 
 
