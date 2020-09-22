@@ -1,4 +1,5 @@
 import updateHistory from './updateHistory.js';
+import showAvatar from './showAvatar.js';
 
 let apiUrl='https://myrestapi01.herokuapp.com/users'
 // get all users to show in users dropdown
@@ -45,13 +46,14 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
         document.getElementById('newUser').style.visibility = "hidden";
         document.getElementById('page-2').style.visibility = "visible";
 
-    let input = document.getElementById('namesList').value;
+        let input = document.getElementById('namesList').value;
         axios.get(apiUrl)
                 .then((res => {
                     console.log(res)
                     let found = res.data.filter((user) => { return user.name === input});
                     user= found[0];
-                    console.log(user)
+                    console.log(user);
+                    showAvatar();
                     updateHistory(user);
                 })
                 )
@@ -76,7 +78,7 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
 
                 }
             axios.patch(`https://myrestapi01.herokuapp.com/users/${user.id}`, user)
-                .then((user) =>{ 
+                .then((user) =>{
                     updateHistory(user.data);
                 })
                 .catch((err) => console.err(err));
