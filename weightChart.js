@@ -1,7 +1,7 @@
 export default async function weightChart(weightHistory){
     let data = await getData(weightHistory);
     const ctx = document.getElementById('chart').getContext('2d');
-    if(data.xlabels.length >0){
+    if(data.xlabels.length > 0){
     const myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -36,13 +36,12 @@ export default async function weightChart(weightHistory){
 }
 
 function getData(weightHistory){
-console.log(weightHistory.forEach((record) => console.log(record.date)))
 let xlabels=[];
 let yweight=[];
 weightHistory.forEach((record) => {
     xlabels.push(record.date);
     yweight.push(record.weight);
 })
-console.log(xlabels, yweight);
+// console.log(xlabels, yweight);
 return {xlabels, yweight};
 }
