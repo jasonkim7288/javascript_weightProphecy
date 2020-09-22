@@ -6,7 +6,7 @@ export default function showAvatar() {
         let avatarElement = document.getElementById('avatar-img');
 
         usernameElement.textContent = user.name;
-        avatarElement.src = `https://api.adorable.io/avatars/30/${user.name}.png`
+        avatarElement.src = `https://api.adorable.io/avatars/100/${user.name}.png`
         // TTS
         let utterance = new SpeechSynthesisUtterance();
         utterance.rate = 0.7

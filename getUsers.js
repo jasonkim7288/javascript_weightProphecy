@@ -25,15 +25,23 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
     let updateForm = document.getElementById('updateUser');
 
     // add new user method
-    let addUser=()=>{
-        let user = {
+    let addUser=(event)=>{
+        event.preventDefault();
+        let userInput = {
             name: form.name.value,
-              age: form.age.value,
-              weightHistory:[]
+            age: form.age.value,
+            weightHistory:[]
         }
-        axios.post(apiUrl, user)
-        .then((user) => console.log(user))
-        .catch((err) => console.err(err));
+        axios.post(apiUrl, userInput)
+            .then((returnedUser) => {
+                console.log(returnedUser);
+                user = JSON.parse(JSON.stringify(returnedUser));
+                document.getElementById('page-1').classList.add('d-none');
+                document.getElementById('page-2').style.visibility = "visible";
+                showAvatar();
+                updateHistory(user);
+            })
+            .catch((err) => console.err(err));
     }
 
     // call addUser function upon form submit
@@ -43,7 +51,8 @@ let apiUrl='https://myrestapi01.herokuapp.com/users'
 
     // show weight history, weight chart for an existing user
     document.getElementById('ok').addEventListener('click', ()=>{
-        document.getElementById('newUser').style.visibility = "hidden";
+        // document.getElementById('newUser').style.visibility = "hidden";
+        document.getElementById('page-1').classList.add('d-none');
         document.getElementById('page-2').style.visibility = "visible";
 
         let input = document.getElementById('namesList').value;

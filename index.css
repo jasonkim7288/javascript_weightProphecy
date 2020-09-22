@@ -4,10 +4,15 @@
     box-sizing: border-box;
 }
 
+.navbar {
+    background-color: #e9ecef;
+}
+
+.navbar-brand {
+    font-size: 1.9em;
+}
+
 #user-info {
-    position: fixed;
-    right: 30px;
-    top: 5px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -15,14 +20,18 @@
 
 #user-name {
     font-weight: bold;
-    font-size: 2em;
-    padding: 10px;
+    font-size: 1.2em;
     margin: 0;
 }
 
 #avatar-img {
     border-radius: 50%;
+    width: 40px;
     margin-left: 10px;
+}
+
+#namesList {
+    min-width: 200px;
 }
 
 #table-wrapper {
