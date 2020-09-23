@@ -1,5 +1,5 @@
 import weightChart from './weightChart.js';
-import sortWeightHistory from './sortWeightHistory.js';
+import {sortWeightHistory, sortNames} from './sortData.js';
 
 export default function updateHistory(user) {
     let table = document.querySelector('table');

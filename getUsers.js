@@ -1,6 +1,6 @@
 import updateHistory from './updateHistory.js';
 import showAvatar from './showAvatar.js';
-import sortWeightHistory from './sortWeightHistory.js';
+import {sortWeightHistory, sortNames} from './sortData.js';
 
 
 let apiUrl = 'https://myrestapi01.herokuapp.com/users';
@@ -18,6 +18,7 @@ let getUsers = () => {
     axios.get(apiUrl)
         .then(res => {
             let x = document.getElementById("namesList");
+            sortNames(res.data);
             res.data.forEach((data) => {
                 let option = document.createElement("option");
                 option.text = data.name;
