@@ -95,7 +95,7 @@ function predict({ age, weightHistory }, inputDate) {
         (new Date(inputDate)).getTime()));
 
     async function getResult(x_vals, y_vals, x_input) {
-        var orderPoly = 5;
+        var orderPoly = 1;
         var operands = [];
 
         initOperands();
