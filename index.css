@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 body, .jumbotron{
-    background-color: rgb(206, 231, 252);
+    background-color: rgb(220, 252, 246);
+    color: rgb(94, 107, 121);
 }
 
 .jumbotron{
@@ -13,7 +14,8 @@ body, .jumbotron{
 }
 
 .navbar {
-    background-color: #9ec5ec;
+    background-color: #d2f3f3;
+    color: rgb(255, 83, 71);
 }
 
 .navbar-brand {
@@ -83,4 +85,9 @@ body, .jumbotron{
     font-weight: bold;
     margin: 20px;;
 }
+
+.navbar-brand{
+    color: violet;
+}
+
 

@@ -1,8 +1,10 @@
 import weightChart from './weightChart.js';
+import sortWeightHistory from './sortWeightHistory.js';
 
 export default function updateHistory(user) {
     let table = document.querySelector('table');
     table.innerHTML = '';
+    sortWeightHistory(user);
 
     user.weightHistory.forEach((weightInfo, index) => {
         let tableRow = document.createElement('tr');

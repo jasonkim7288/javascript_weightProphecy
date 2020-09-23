@@ -1,5 +1,7 @@
 import updateHistory from './updateHistory.js';
 import showAvatar from './showAvatar.js';
+import sortWeightHistory from './sortWeightHistory.js';
+
 
 let apiUrl = 'https://myrestapi01.herokuapp.com/users';
 // get form id
@@ -8,6 +10,8 @@ let updateForm = document.getElementById('updateUser');
 let message = document.getElementById('message');
 let page1 = document.getElementById('page-1');
 let page2 = document.getElementById('page-2');
+let utterance = new SpeechSynthesisUtterance();
+utterance.rate = 0.7;
 
 // get all users to show in users dropdown
 let getUsers = () => {
@@ -81,8 +85,7 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
         }
 
         if (user.weightHistory.find(({ date }) => date === weightLog.date)) {
-            let utterance = new SpeechSynthesisUtterance();
-            utterance.rate = 0.7
+            
             utterance.text = 'Entry is already created for date ' + weightLog.date;
             speechSynthesis.speak(utterance);
             message.style.color= 'red';
@@ -90,11 +93,7 @@ document.getElementById('input-weight').addEventListener('click', (e) => {
 
         } else {
             user.weightHistory.push(weightLog);
-            user.weightHistory.sort(function (a, b) {
-                if (a.date > b.date) return 1;
-                if (a.date< b.date) return -1;
-                return 0;
-            });
+            sortWeightHistory(user);
             message.style.color= 'green';
             message.textContent = "Weight Logged Successfully";
         }
